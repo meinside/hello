@@ -65,5 +65,7 @@ func runHttp(portNo int) {
 
 // response with 'hello'
 func hello(w http.ResponseWriter, r *http.Request) {
-	io.WriteString(w, "hello\n")
+	if _, err := io.WriteString(w, "hello\n"); err != nil {
+		log.Printf("failed to write hello: %s", err)
+	}
 }
