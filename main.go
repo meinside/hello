@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"strconv"
 )
 
@@ -39,6 +40,7 @@ func main() {
 // print usage and exit with error code: `errorCode`
 func printUsage(errorCode int) {
 	fmt.Printf(`Usage:
+
 	# print this help message
 	$ %[2]s -h
 	$ %[2]s --help
@@ -48,7 +50,7 @@ func printUsage(errorCode int) {
 
 	# run http server on port number: PORT_NUMBER
 	$ %[2]s PORT_NUMBER
-`, defaultPortNumber, os.Args[0])
+`, defaultPortNumber, filepath.Base(os.Args[0]))
 
 	os.Exit(errorCode)
 }
@@ -63,7 +65,7 @@ func runHttp(portNo int) {
 	}
 }
 
-// response with 'hello'
+// respond with 'hello'
 func hello(w http.ResponseWriter, r *http.Request) {
 	if _, err := io.WriteString(w, "hello\n"); err != nil {
 		log.Printf("failed to write hello: %s", err)
