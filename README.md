@@ -20,6 +20,8 @@ $ hello PORT_NUMBER
 
 ## systemd
 
+Put following lines in `/etc/systemd/system/hello.service`:
+
 ```
 [Unit]
 Description=Hello
@@ -39,6 +41,18 @@ NoExecPaths=/bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin
 
 [Install]
 WantedBy=multi-user.target
+```
+
+enable with:
+
+```bash
+$ sudo systemctl enable hello.service
+```
+
+and start with:
+
+```bash
+$ sudo systemctl start hello.service
 ```
 
 ## license
