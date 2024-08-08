@@ -57,6 +57,7 @@ func printUsage(errorCode int) {
 
 // run http server on port number: `portNo`
 func runHttp(portNo int) {
+	// handle requests
 	http.HandleFunc("/", hello)
 
 	addr := fmt.Sprintf(":%d", portNo)
@@ -65,8 +66,14 @@ func runHttp(portNo int) {
 	}
 }
 
-// respond with 'hello'
+// handle requests to "/*"
 func hello(w http.ResponseWriter, r *http.Request) {
+	// all other routes other than "/": http 404 error
+	if r.URL.Path != "/" {
+		w.WriteHeader(http.StatusNotFound)
+	}
+
+	// respond with 'hello'
 	if _, err := io.WriteString(w, "hello\n"); err != nil {
 		log.Printf("failed to write hello: %s", err)
 	}
