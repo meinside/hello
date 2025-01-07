@@ -29,6 +29,7 @@ After=syslog.target
 After=network.target
 
 [Service]
+User=USER_NAME
 Type=simple
 WorkingDirectory=/dir/to/hello
 ExecStart=/path/to/bin/hello 9999
@@ -36,7 +37,7 @@ Restart=always
 RestartSec=5
 DynamicUser=yes
 ReadOnlyPaths=/
-MemoryLimit=10M
+MemoryMax=10M
 NoExecPaths=/bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin
 
 [Install]
