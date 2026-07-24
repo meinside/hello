@@ -1,6 +1,6 @@
 # hello
 
-Super simple http server which responds with just 'hello' message.
+A simple HTTP server that only responds with 'hello'.
 
 Built for health checking or something like that.
 
@@ -37,7 +37,8 @@ Restart=always
 RestartSec=5
 DynamicUser=yes
 ReadOnlyPaths=/
-MemoryMax=10M
+MemoryHigh=32M
+MemoryMax=40M
 NoExecPaths=/bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin
 
 # hardening
